@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brandy-RNG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="brng.js"></script>
+    <script defer src="main.js"></script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .histogram {
+            margin: 25px 0px;
+        }
+
+        /* canvas {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        } */
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-blue-600">BRANDY&#x1F943;</h1>
+            <nav class="space-x-6 text-sm font-medium">
+                <a href="#" class="text-gray-700 hover:text-blue-600">Number Generator</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600">More Tools</a>
+            </nav>
+        </div>
+
+        <style>
+            .restab {
+                width: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            ._test {
+                font-size: xx-small;
+                display: none;
+            }
+        </style>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 text-center">
+            <h2 class="text-2xl font-semibold mb-6">Balanced Random Number Generator</h2>
+            <div class="flex w-full justify-center">
+                <button id="settingsBtn" class="flex justify-around w-[50%] m-[5px] bg-gray-100 py-2 rounded-lg hover:bg-gray-200 transition text-gray-500">
+                    <span>Settings</span>
+                </button>
+            </div>
+            
+            <div id="settings" class="border rounded-lg p-4 hidden">
+                <div>&nbsp;</div>
+                <div id="balancedparameters" class="flex items-center grid grid-cols-2 gap-4 mb-4">
+                    <span>\( \Delta_{\text{max}} \)</span>
+                    <span><input id="dmax" type="number" value="4" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" /></span>
+                    <span>\( F \)</span>
+                    <span><input id="kval" type="number" value="4" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" /></span>
+                </div>
+                <div>&nbsp;</div>
+
+            </div>
+
+            <div>&nbsp;</div>
+
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="min" class="block text-sm mb-1">Min</label>
+                    <input id="min" type="number" value="1"
+                        class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+                </div>
+                <div>
+                    <label for="max" class="block text-sm mb-1">Max</label>
+                    <input id="max" type="number" value="100"
+                        class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500" />
+                </div>
+            </div>
+
+            <button id="generateBtn" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                Generate
+            </button>
+
+            <div class="flex items-center justify-around">
+                <span class="restab"></span>
+                <span class="restab"></span>
+                <span class="restab"><div id="result" class="flex items-center text-4xl font-bold text-blue-700">&boxh;</div></span>
+                <span class="restab"><b id="result_prev" class="flex items-center text-2xl text-blue-500"></b><br></span>
+                <span class="restab"><b id="result_prev_2" class="flex items-center text-1xl text-blue-300"></b></span>
+            </div>
+
+            <span id="hcontainer"></span>
+        </div>
+    </main>
+
+    <main class="flex-grow flex items-center justify-center p-6">
+        <!-- <div class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 text-center">
+            \( \left\{\textbf{S} \in \mathbb{Z} \space \middle| \space \bigcup_{i=1}^{n} \left\{ i \right\}^{c_i}
+            \right\} \)
+            <br>
+            \( X \sim \mathrm{Uniform}\left( \textbf{S} \right) \)
+        </div> -->
+        <div class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 text-center">
+            <b>Balanced Random Number Generator</b>
+            <br>Generate random numbers that seem more random than truly random number! Unlike typical RNGs that may cluster results, this tool adds weight factors to the distribution. <br>
+            <br> \( \Delta_{\text{max}} \)
+            <br> This parameter limits the difference between the maximum and minimum generated number. For example, a number cannot be generated 4 times until all others have been generated at least once. <br>
+            <br> \( \mathbf{F} \)
+            <br> This parameter adjusts how randomized the distribution is. Higher values will make the algorithm act more like a typical RNG.
+        </div>
+    </main>
+
+
+</body>
+
+</html>
