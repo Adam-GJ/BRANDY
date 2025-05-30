@@ -118,7 +118,7 @@ class brng {
         this.lastresult = this.#getresult();
         if (this.hashistogram) {this.#update_histogram();}
 
-        this.history.push(this.lastindex);
+        this.history.push(this.values[this.lastindex]);
 
         return this.lastresult;
     }
