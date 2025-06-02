@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brandy-RNG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="flipacoin.js"></script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .histogram {
+            margin: 25px 0px;
+        }
+
+        /* canvas {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        } */
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-blue-600">BRANDY&#x1F943;</h1>
+            <nav class="space-x-6 text-sm font-medium">
+                <a href="#" class="text-gray-700 hover:text-blue-600">Number Generator</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600">More Tools</a>
+            </nav>
+        </div>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 text-center">
+            <h2 class="text-2xl font-semibold mb-6">Flip a Coin</h2>
+
+            <div class="flex justify-around width-full" style="height: 200px;">
+                <video id="coin_video" width="200" height="200" autoplay="autoplay" style="background-image: url(img/heads.png); background-size: contain;">
+                    <source id="coin" src="" type="video/mp4" />
+                </video>
+            </div>
+            
+
+            <button id="generateBtn" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                Flip
+            </button>
+
+        </div>
+    </main>
+
+
+</body>
+
+</html>
